@@ -1,6 +1,7 @@
 import runWorld as rw
 import drawWorld as dw
 import pygame as pg
+from random import randint
 
 ################################################################
 
@@ -102,7 +103,20 @@ def handleEvent(state, event):
 
 # The cat starts at the left, halfway up the display, moving
 # diagonally downwards
-initState = (0,250,1,1)
+
+# x position
+x = randint(0,499)
+
+# y position
+y = randint(0,499)
+
+# x velocity
+a = randint(1,5)
+
+# y velocity
+b = randint(1,5)
+
+initState = (x, y, a, b)
 
 # Run the simulation no faster than 60 frames per second
 frameRate = 60
