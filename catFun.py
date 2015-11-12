@@ -15,7 +15,7 @@ import pygame as pg
 #
 # For example, the tuple (7,1) would represent the cat at x-coord,
 # 7, and moving to the right by 1 pixel per "clock tick."
-# 
+#
 # The initial state of the cat in this program is (0,1), meaning that the cat
 # starts at the left of the screen and moves right one pixel per tick.
 #
@@ -66,7 +66,7 @@ def updateState(state):
 # that is, when pos is less then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0):
+    if (state[0] > width or state[0] < 0 or state[1] > height or state[1] < 0):
         return True
     else:
         return False
@@ -85,13 +85,13 @@ def endState(state):
 #
 # state -> event -> state
 #
-def handleEvent(state, event):  
+def handleEvent(state, event):
 #    print("Handling event: " + str(event))
     if (event.type == pg.MOUSEBUTTONDOWN):
         if (state[1]) == 1:
             newState = -1
         else:
-            newState = 1   
+            newState = 1
         return((state[0],newState))
     else:
         return(state)
@@ -101,7 +101,7 @@ def handleEvent(state, event):
 # World state will be (x, y, x velocity, y velocity)
 
 # The cat starts at the left, halfway up the display, moving
-# diagonally downwards 
+# diagonally downwards
 initState = (0,250,1,1)
 
 # Run the simulation no faster than 60 frames per second
